@@ -17,7 +17,7 @@ LOCATIONS = [
 
 
 def get_all_locations():
-    # Open a connection to the database
+    """Open a connection to the database"""
     with sqlite3.connect("./kennel.sqlite3") as conn:
 
         conn.row_factory = sqlite3.Row
@@ -53,11 +53,10 @@ def get_all_locations():
 
 
 def get_single_location(id):
-    # Open a connection to the database
+    """Open a connection to the database"""
     with sqlite3.connect("./kennel.sqlite3") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
-        
         # Use a ? parameter to inject a variable's value
         # into the SQL statement.
         db_cursor.execute("""

@@ -64,12 +64,42 @@ INSERT INTO `Animal` VALUES (null, "Curly", "Treatment", "Poodle", 4, 2);
 
 
 -- Get only the animal rows where the `id` field value is 3
+-- SELECT
+--     a.id,
+--     a.name,
+--     a.breed,
+--     a.status,
+--     a.location_id,
+--     a.customer_id
+-- FROM animal a
+-- WHERE a.id = 3
+
 SELECT
     a.id,
     a.name,
     a.breed,
     a.status,
     a.location_id,
-    a.customer_id
-FROM animal a
-WHERE a.id = 3
+    a.customer_id,
+    l.name location_name,
+    l.address location_address,
+		c.name,
+		c.address,
+		c.email,
+		c.password
+FROM Animal a
+JOIN Customer c
+    ON c.id = a.location_id
+
+SELECT
+		e.id,
+		e.name,
+		e.address,
+		e.location_id,
+		l.name location_name,
+		l.address location_address
+FROM Employee e
+JOIN Location l	
+		ON l.id = e.location_id	
+
+SELECT * FROM Animal ORDER BY id DESC;

@@ -21,7 +21,7 @@ CUSTOMERS = [
 
 
 def get_all_customers():
-    # Open a connection to the database
+    """Open a connection to the database"""
     with sqlite3.connect("./kennel.sqlite3") as conn:
 
         conn.row_factory = sqlite3.Row
@@ -55,7 +55,7 @@ def get_all_customers():
             # Customer class above.
 
             customer = Customer(
-                row['id'], row['name'], row['address'], row['email'], row['password']
+                row["id"], row["name"], row["address"], row["email"], row["password"]
             )
 
             customers.append(customer.__dict__)
@@ -64,7 +64,7 @@ def get_all_customers():
 
 
 def get_customer_by_email(email):
-
+    """Open a connection to the database"""
     with sqlite3.connect("./kennel.sqlite3") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
@@ -89,7 +89,7 @@ def get_customer_by_email(email):
 
         for row in dataset:
             customer = Customer(
-                row['id'], row['name'], row['address'], row['email'], row['password']
+                row["id"], row["name"], row["address"], row["email"], row["password"]
             )
             customers.append(customer.__dict__)
 
@@ -97,7 +97,7 @@ def get_customer_by_email(email):
 
 
 def get_single_customer(id):
-    # Open a connection to the database
+    """Open a connection to the database"""
     with sqlite3.connect("./kennel.sqlite3") as conn:
         conn.row_factory = sqlite3.Row
         db_cursor = conn.cursor()
@@ -123,7 +123,7 @@ def get_single_customer(id):
 
         # Create an customer instance from the current row
         customer = Customer(
-            data['id'], data['name'], data['address'], data['email'], data['password']
+            data["id"], data["name"], data["address"], data["email"], data["password"]
         )
 
         return customer.__dict__
@@ -143,7 +143,7 @@ def create_customer(customer):
 
 
 def delete_customer(id):
-    # Initial -1 value for customer index, in case one isn't found
+    """Initial -1 value for customer index, in case one isn't found"""
     customer_index = -1
 
     # Iterate the CUSTOMERS list, but use enumerate() so that you
